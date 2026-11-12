@@ -3,7 +3,8 @@
     internal class Program
     {
         static string[] huto = { "husi", "" ,"", "sonka", "szalámi", "", "sajt", "", "ubi", "paradicsom"};
-        
+
+        static int[] szamok = new int[10];
         static int Takarit()
         {
             int db = 0;
@@ -56,17 +57,119 @@
                 
             }
         }
+
+        static void FeltoltoEgyeiekkel(int min, int max)
+        {
+            Random rnd = new Random();
+
+            for (int i = 0; i < szamok.Length; i++)
+            {
+                bool van = false;
+
+                do
+                {
+                    szamok[i] = rnd.Next(min, max + 1);
+                    van = false;
+
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (szamok[i] == szamok[j])
+                        {
+                            van = true;
+                        }
+                    }
+                } while (van);
+            }
+        }
+
+        static int[] LeghosszabbNovekvo()
+        {
+            int db = 1;
+            int maxdb = 1;
+            int kezdo = 0;
+            int maxKezdo = 0;
+
+            for (int i = 1; i < szamok.Length; i++)
+            {
+                if (szamok[i] > szamok[i - 1])
+                {
+                    db++;
+                }
+                else
+                {
+                    db = 1;
+                    kezdo = i;
+                }
+
+                if(db > maxdb)
+                {
+                    maxdb = db;
+                    maxKezdo = kezdo;
+                }
+            }
+
+            int[] eredmeny = new int[maxdb];
+
+            for(int i =0; i < maxdb; i++)
+            {
+                eredmeny[i] = szamok[maxKezdo + i];
+            }
+
+
+            return eredmeny;
+        }
+
+        static void AtlagAlattiDuplazas()
+        {
+            double atlag = 0;
+
+            for (int i = 0; i < szamok.Length; i++)
+            {
+                atlag += szamok[i];
+            }
+
+            atlag = atlag / szamok.Length;
+
+            for (int i = 0; i < szamok.Length; i++)
+            {
+                if (szamok[i] < atlag)
+                {
+                    szamok[i] = szamok[i] * 2;
+                }
+            }
+        }
+
+
         static void Main(string[] args)
         {
-           
-            
 
-            Console.WriteLine("Élelmiszerek száma: " + Takarit());
+            //Console.WriteLine("Élelmiszerek száma: " + Takarit());
 
-            Console.WriteLine("Husi indexe: " + (KeresEtel("husi")+1));
+            //Console.WriteLine("Husi indexe: " + (KeresEtel("husi")+1));
 
-            Console.WriteLine("Magánhangzóval kezdődő ételek: ");
-            Lista();
+            //Console.WriteLine("Magánhangzóval kezdődő ételek: ");
+            //Lista();
+
+            FeltoltoEgyeiekkel(1, 50);
+
+            Console.WriteLine("Eredeti tömb: ");
+
+            for (int i = 0; i < szamok.Length; i++)
+            {
+                Console.WriteLine(szamok[i] + " ");
+            }
+
+            Console.WriteLine("\nLeghosszabb növekvő sorozat: ");
+
+            int[] eredmeny = LeghosszabbNovekvo();
+
+            for(int i = 0; i < eredmeny.Length; i++)
+            {
+
+            }
+
+
+
 
 
         }
