@@ -2,29 +2,8 @@
 {
     internal class Program
     {
-        static string[] huto = new string[10];
-
-        static void HutoFeltoltes()
-        {
-            for(int i = 0; i < huto.Length; i++)
-            {
-                huto[i] = "";
-            }
-        }
-
-        static void Elhelyezes(string etel)
-        {
-            for (int i = 0; i < huto.Length; i++)
-            {
-                if (huto[i] == "")
-                {
-                    huto[i] = etel;
-                    return;
-                }
-            }
-            Console.WriteLine("A hűtő tele van!");
-        }
-
+        static string[] huto = { "husi", "" ,"", "sonka", "szalámi", "", "sajt", "", "ubi", "paradicsom"};
+        
         static int Takarit()
         {
             int db = 0;
@@ -80,14 +59,11 @@
         static void Main(string[] args)
         {
            
-            Elhelyezes("husi");
-            Elhelyezes("sajt");
-            Elhelyezes("sonka");
-            Elhelyezes("szalámi");
+            
 
             Console.WriteLine("Élelmiszerek száma: " + Takarit());
 
-            Console.WriteLine("Husi indexe: " + KeresEtel("husi"));
+            Console.WriteLine("Husi indexe: " + (KeresEtel("husi")+1));
 
             Console.WriteLine("Magánhangzóval kezdődő ételek: ");
             Lista();
