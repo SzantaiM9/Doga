@@ -43,8 +43,23 @@
             }
             return db;
         }
+
+        static int KeresEtel(string etelNeve)
+        {
+            for (int i = 0; i < huto.Length; i++)
+            {
+                if (huto[i] == etelNeve)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+        
         static void Main(string[] args)
         {
+            
             
         }
     }
