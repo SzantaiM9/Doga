@@ -56,11 +56,43 @@
             return 0;
         }
 
-        
+        static void Lista()
+        {
+            string maganhangzok = "aáeéiíoóöőuúüű";
+
+            for(int i = 0; i < huto.Length; i++)
+            {
+                if (huto[i] != "")
+                {
+                    for(int j = 0; j < maganhangzok.Length; j++)
+                    {
+                        if (huto[i][0] == maganhangzok[j])
+                        {
+                            Console.WriteLine(huto[i]);
+                            break;
+                        }
+                    }
+                }
+                
+                
+            }
+        }
         static void Main(string[] args)
         {
-            
-            
+           
+            Elhelyezes("husi");
+            Elhelyezes("sajt");
+            Elhelyezes("sonka");
+            Elhelyezes("szalámi");
+
+            Console.WriteLine("Élelmiszerek száma: " + Takarit());
+
+            Console.WriteLine("Husi indexe: " + KeresEtel("husi"));
+
+            Console.WriteLine("Magánhangzóval kezdődő ételek: ");
+            Lista();
+
+
         }
     }
 }
