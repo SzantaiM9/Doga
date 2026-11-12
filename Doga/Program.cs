@@ -165,7 +165,16 @@
 
             for(int i = 0; i < eredmeny.Length; i++)
             {
+                Console.WriteLine(eredmeny[i] + " ");
+            }
 
+            AtlagAlattiDuplazas();
+
+            Console.WriteLine("\nÁtlag alatti elemek duplázása: ");
+
+            for (int i = 0; i < szamok.Length; i++)
+            {
+                Console.WriteLine(szamok[i] + " ");
             }
 
 
